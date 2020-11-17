@@ -1,0 +1,21 @@
+package main
+
+import (
+	"crypto/sha256"
+	"fmt"
+)
+
+func main()  {
+	//交易数据
+	data := "helloworld"
+
+	for i := 0; i < 1000000; i++ {
+		hash := sha256.Sum256([]byte(data + string(i)))
+		//Sum256接收的是byte类型，所以将数据+字符串转换数据类型
+		//返回hash的是 [32]数组
+
+		fmt.Printf("hash:%x\n",hash[:])
+		//%x表示十六进制打印，
+	}
+
+}

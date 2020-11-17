@@ -1,0 +1,111 @@
+package main
+
+import (
+	"crypto/sha256"
+	"fmt"
+)
+
+//1.定义结构
+type Block struct {
+	//1.前区块哈希
+	PrevHash []byte
+	//2.当前区块哈希
+	Hash []byte
+	//3.数据
+	Data []byte
+
+}
+
+//2.创建区块
+func NewBlock(data string, preBlockHash []byte) *Block  {
+	//肯定是需要返回的Block的
+	//创建一个区块需要前区块哈希、数据;这俩个数据是没有的，肯定基于外部数据(data string, preBlockHash []byte)
+
+	//定义一个block,接收传参
+	block := Block{
+		PrevHash : preBlockHash,
+		Hash : []byte{},//先填空，后面再计算 //TODO
+		Data : []byte(data),
+	}
+
+	//在此处调用生成hash
+	block.SetHash()
+
+	return &block //返回给&block指针
+}
+//3.生成哈希
+func (block *Block) SetHash()  {
+	//写个函数，无需返回值，原因是Block内部哈希
+
+	//1.拼装数据  由于下面sum256需要而创建的；
+	//制造blockInfo数据的由来：表示把每个Data的数组，打碎逐一追加到上个区块中
+	blockInfo := append(block.PrevHash,block.Data...)
+
+	//2.sha256
+	//func Sum256(data []byte) [Size]byte  要的切片，返回数组
+	//所以blockInfo是创建的要的数据，
+	hash := sha256.Sum256(blockInfo) //返回一个hash值
+	block.Hash = hash[:]  //返回的hash值赋予给Block结构体中的Hash
+
+}
+//4.引入区块链
+//定义一个区块链数组,存储所有的区块；同样的数据类型用数组来存储
+type BlockChain struct {
+	blocks []*Block
+}
+
+//5.定义一个区块链,返回一个BlockChain
+func NewBlockChain () *BlockChain {
+	//创建一个创世块，并作为第一个区块添加到区块链中
+	genesisBlock := GenesisBlock()
+
+	//返回指针
+	return &BlockChain{
+		//[]*Block{}填写内容genesisBlock
+		blocks: []*Block{genesisBlock},
+	}
+}
+
+//定义一个创世块
+func GenesisBlock() *Block {
+	//NewBlock()传参，谁调用return结果返给谁
+	return NewBlock("Go创世块",[]byte{})
+}
+
+
+//6.添加区块；  方法一定属于BlockChain，向区块链上追加
+func (bc *BlockChain)AddBlock(data string)  {
+	//如何获取钱区块的哈希值呢？
+
+	//获取最后一个区块;(通过区块链最后一个数-1，就表示最后一个区块）
+	lasteBlock := bc.blocks[len(bc.blocks)-1]
+	prevHash := lasteBlock.Hash
+
+	//a.创建新的区块，（需要数据外传；需要前Hash，前Hash通过找区块链最后一个区块）
+	block := NewBlock(data, prevHash)
+	//b.添加到区块链数组中
+	bc.blocks = append(bc.blocks, block)
+}
+
+
+//7.重构代码
+
+func main() {
+	//调用NewBlockChain，返回一个bc（缩写）
+	bc := NewBlockChain()
+
+	bc.AddBlock("A向B转了50枚比特币！")
+	bc.AddBlock("A又向B转了50枚比特币！")
+
+	//返回的值是数组，需要逐个遍历
+	for i, block := range bc.blocks  {
+		fmt.Printf("====== 当前区块高度:  %d=====\n",i)
+		fmt.Printf("前区块Hash值: %x\n",block.PrevHash)
+		fmt.Printf("当前区块Hash值: %x\n",block.Hash)
+		fmt.Printf("区块数据: %s\n",block.Data)
+
+	}
+
+
+
+}
