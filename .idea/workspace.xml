@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc79512e-7427-48b5-8a94-15d462a0a766" name="Default Changelist" comment="" />
+    <list default="true" id="cc79512e-7427-48b5-8a94-15d462a0a766" name="Default Changelist" comment="push block to git">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day1/block.go" beforeDir="false" afterPath="$PROJECT_DIR$/day1/block.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day1/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/day1/main.go" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +17,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/day1/block.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="1035">
+              <caret line="69" column="43" lean-forward="true" selection-end-line="80" selection-end-column="1" />
               <folding>
                 <element signature="e#13#47#0" expanded="true" />
               </folding>
@@ -34,8 +38,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/day1/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="60">
+              <caret line="4" column="8" lean-forward="true" selection-end-line="21" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -50,26 +54,30 @@
     </option>
   </component>
   <component name="GOROOT" path="/usr/local/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/day1/pow.go" />
-        <option value="$PROJECT_DIR$/day1/main.go" />
         <option value="$PROJECT_DIR$/day1/01_区块的创建.go" />
         <option value="$PROJECT_DIR$/day1/02_实现SetHash.go" />
         <option value="$PROJECT_DIR$/day1/03创建区块链结构及创世块.go" />
-        <option value="$PROJECT_DIR$/day1/block.go" />
         <option value="$PROJECT_DIR$/day1/04_添加区块AddBlock.go" />
         <option value="$PROJECT_DIR$/day1/blockchain.go" />
+        <option value="$PROJECT_DIR$/day1/main.go" />
+        <option value="$PROJECT_DIR$/day1/block.go" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="706" />
+    <option name="x" value="915" />
     <option name="y" value="191" />
     <option name="width" value="1204" />
     <option name="height" value="839" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -100,6 +108,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="GO_FMT" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.import.settings.migrated" value="true" />
@@ -173,7 +183,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="706" y="191" width="1204" height="839" extended-state="0" />
+    <frame x="915" y="191" width="1204" height="839" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24956971" />
@@ -198,6 +209,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="push block to git" />
+    <option name="LAST_COMMIT_MESSAGE" value="push block to git" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///usr/local/go/src/builtin/builtin.go">
@@ -231,20 +246,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/day1/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/day1/blockchain.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/day1/pow.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -255,10 +256,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/day1/blockchain.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day1/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="8" lean-forward="true" selection-end-line="21" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/day1/block.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="1035">
+          <caret line="69" column="43" lean-forward="true" selection-end-line="80" selection-end-column="1" />
           <folding>
             <element signature="e#13#47#0" expanded="true" />
           </folding>

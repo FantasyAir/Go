@@ -19,7 +19,4 @@ func main() {
 		fmt.Printf("区块数据: %s\n",block.Data)
 
 	}
-
-
-
 }
