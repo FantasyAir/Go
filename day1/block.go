@@ -67,20 +67,34 @@ func NewBlock(data string, preBlockHash []byte) *Block  {
 }
 //3.生成哈希
 func (block *Block) SetHash()  {
-	var blockInfo []byte
+	//var blockInfo []byte
 
 	//写个函数，无需返回值，原因是Block内部哈希
 
 	//1.拼装数据  由于下面sum256需要而创建的；
 	//制造blockInfo数据的由来：表示把每个Data的数组，打碎逐一追加到上个区块中
-	blockInfo = append(blockInfo,Uint64ToByte(block.Version)...)
+	/*blockInfo = append(blockInfo,Uint64ToByte(block.Version)...)
 	blockInfo = append(blockInfo,block.PrevHash...)
 	blockInfo = append(blockInfo,block.MerkelRoot...)
 	blockInfo = append(blockInfo,Uint64ToByte(block.TimeStamp)...)
 	blockInfo = append(blockInfo,Uint64ToByte(block.Difficulty)...)
 	blockInfo = append(blockInfo,Uint64ToByte(block.Nonce)...)
 	blockInfo = append(blockInfo,block.Data...)
+	*/
 
+	//优化上面代码
+	tmp := [][]byte{
+		Uint64ToByte(block.Version),
+		block.PrevHash,
+		block.MerkelRoot,
+		Uint64ToByte(block.TimeStamp),
+		Uint64ToByte(block.Difficulty),
+		Uint64ToByte(block.Nonce),
+		block.Data,
+	}
+
+	//将二维的切片数组连接起来，返回一个一维的切片
+	blockInfo := bytes.Join(tmp,[]byte{})
 
 	//2.sha256
 	//func Sum256(data []byte) [Size]byte  要的切片，返回数组
