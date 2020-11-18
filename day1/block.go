@@ -1,7 +1,10 @@
 package main
 
 import (
+	"bytes"
 	"crypto/sha256"
+	"encoding/binary"
+	"log"
 	"time"
 )
 
@@ -28,11 +31,18 @@ type Block struct {
 }
 
 //实现一个辅助函数，功能是将uint64转成[]byte
-
 func Uint64ToByte(num uint64) []byte {
-	//todo
-	return []byte{}
+	var buffer bytes.Buffer
+
+	//网络传输过程;一个字节8位，十六进制就是2个字符，
+	err := binary.Write(&buffer,binary.BigEndian,num)
+	if err != nil {
+		log.Panic(err)
+	}
+
+	return buffer.Bytes()
 }
+
 //2.创建区块
 func NewBlock(data string, preBlockHash []byte) *Block  {
 	//肯定是需要返回的Block的
